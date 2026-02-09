@@ -1,0 +1,10 @@
+version: 2
+sources:
+  - name: eseotres_landing
+    database: eseotres
+    schema: landing_data
+    quoting:
+      identifier: false
+    tables:
+      - name: BASE_CSV
+        description: "Snowflake internal stage"

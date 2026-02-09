@@ -1,0 +1,11 @@
+[project]
+name = "decentralized-analytics"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dbt-core==1.11.3",
+    "dbt-snowflake==1.11.1",
+    "sqlfluff>=4.0.4",
+]
