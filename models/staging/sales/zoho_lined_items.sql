@@ -1,20 +1,20 @@
 WITH landing_lined_items as ( 
 
     SELECT
-        $1::string AS Institucion_homologada,
-        $2::string AS Contrato,
-        $3::string AS Orden,
-        $4::string AS Clave,
-        $5::DATE AS Fecha_emision,
-        $6::string AS Punto_entrega,
-        $7::string AS Producto,
-        $8::STRING AS Direccion,
-        $9::DATE as Fecha_max_entrega,
-        $10::NUMERIC as Piezas,
-        $11::NUMERIC AS Precio,
-        $12::STRING AS Orden_venta,
-        $13::STRING AS Estatus,
-        $14::NUMERIC AS Importe,
+        $1::string AS institucion_homologada,
+        trim(REGEXP_REPLACE($12::STRING, '[^a-zA-Z0-9\\-]', '')) AS orden_venta,
+        $3::string AS orden,
+        $2::string AS contrato,
+        $4::string AS clave,
+        $7::string AS producto,
+        $10::NUMERIC as piezas,
+        $11::NUMERIC AS precio,
+        $14::NUMERIC AS importe,        
+        $5::DATE AS fecha_emision,
+        $6::string AS punto_entrega,
+        $8::STRING AS direccion,
+        $9::DATE as fecha_max_entrega,
+        $13::STRING AS orden_estatus,
         --$15 Notas
         --$16 uso CFDI
         --$17 Forma de pago
@@ -69,14 +69,13 @@ polished_items as (
             WHEN Punto_entrega = 'Secretaría de Salud // Hospital de la mujer' THEN 'Hospital de la Mujer'
             ELSE Punto_entrega 
         END AS Punto_entrega,
-
+        Orden_venta,
+        orden_estatus,
         Producto,
         Direccion,
         Fecha_max_entrega,
         Piezas,
         Precio,
-        Orden_venta,
-        Estatus,
         Importe,
         File_name
     FROM landing_lined_items
@@ -84,4 +83,4 @@ polished_items as (
 
 -- FINAL OUTPUT
 SELECT * FROM polished_items
-WHERE Institucion_homologada = 'CCINSHAE'
+WHERE institucion_homologada = 'CCINSHAE'
