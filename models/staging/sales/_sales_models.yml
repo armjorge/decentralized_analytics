@@ -8,6 +8,6 @@ models:
         description: Llave primaria para órdenes generada por ERP interno, no corresponde al número asignado por el cliente. 
         data_tests: 
           - unique
-  - name: centrailized_orders
+  - name: centralized_orders
     description: órdenes provenientes de los sistemas camunda y SAI, que corresponden a instituciones centralizadas.
 

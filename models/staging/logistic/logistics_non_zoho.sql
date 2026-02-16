@@ -21,7 +21,7 @@ not_centralized_deliveries as (
     from 
         source_items
     where 
-        orden not in ( select orden from {{ref('centrailized_orders')}} )
+        orden not in ( select orden from {{ref('centralized_orders')}} )
 ),
 
 non_zoho_order as (

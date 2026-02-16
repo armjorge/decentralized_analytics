@@ -23,7 +23,7 @@ not_centralized_deliveries as (
     from 
         source_items
     where 
-        orden not in ( select orden from {{ref('centrailized_orders')}} )
+        orden not in ( select orden from {{ref('centralized_orders')}} )
 )
 
 select * from not_centralized_deliveries

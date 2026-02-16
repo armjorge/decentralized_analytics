@@ -34,10 +34,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   ccinshaes_analytics:
-    stagging: 
-      +materialized: view
+    staging: 
+      +materialized: table
     marts: 
-      +materialized: view
+      +materialized: table
       
 
     
