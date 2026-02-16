@@ -8,3 +8,15 @@ sources:
     tables:
       - name: BASE_CSV
         description: "Snowflake internal stage"
+  - name: eseotres_raw
+    database: eseotres
+    schema: raw_data
+    tables: 
+      - name: logistics_lined
+        description: información fuente logística de dos proveedores distintos.
+      - name: SAI
+        description: información fuente de sistema heredado SAI
+      - name: camunda
+        description: información fuente de sistema heredado Camunda
+      - name: zoho_lined
+        description: información fuente de sistema Zoho Sales

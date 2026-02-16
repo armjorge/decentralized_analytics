@@ -22,7 +22,7 @@ grouped_deliveries as (
     codigo_entrega,
     orden,
     facturas_entregadas    
-    from {{ref('logistics_grouped')}}
+    from {{ref('logistics_not_centrals_grouped')}}
 ),
 
 sales_deliveries as (

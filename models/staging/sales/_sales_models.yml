@@ -1,0 +1,13 @@
+models: 
+  - name: zoho_grouped
+    description: órdenes zoho no duplicadas y limpias
+    columns: 
+      - name: orden
+        description: Número de orden asignado por el cliente, verificable en PDF de órdenes o en número de orden de los sistemas heredados. 
+      - name: orden_venta
+        description: Llave primaria para órdenes generada por ERP interno, no corresponde al número asignado por el cliente. 
+        data_tests: 
+          - unique
+  - name: centrailized_orders
+    description: órdenes provenientes de los sistemas camunda y SAI, que corresponden a instituciones centralizadas.
+

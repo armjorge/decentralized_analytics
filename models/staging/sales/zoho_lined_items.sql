@@ -1,29 +1,23 @@
 WITH landing_lined_items as ( 
 
     SELECT
-        $1::string AS institucion_homologada,
-        trim(REGEXP_REPLACE($12::STRING, '[^a-zA-Z0-9\\-]', '')) AS orden_venta,
-        $3::string AS orden,
-        $2::string AS contrato,
-        $4::string AS clave,
-        $7::string AS producto,
-        $10::NUMERIC as piezas,
-        $11::NUMERIC AS precio,
-        $14::NUMERIC AS importe,        
-        $5::DATE AS fecha_emision,
-        $6::string AS punto_entrega,
-        $8::STRING AS direccion,
-        $9::DATE as fecha_max_entrega,
-        $13::STRING AS orden_estatus,
-        --$15 Notas
-        --$16 uso CFDI
-        --$17 Forma de pago
-        --$18 Quantity Invoiced
-        --$19 ShippingState
-        $20::STRING as File_name
+        institucion_homologada,
+        orden_venta,
+        orden,
+        contrato,
+        clave,
+        producto,
+        piezas,
+        precio,
+        importe,        
+        fecha_emision,
+        punto_entrega,
+        direccion,
+        fecha_max_entrega,
+        orden_estatus,
+        file_name
     FROM
-        @{{source('eseotres_landing', 'BASE_CSV')}}/consolidado.csv
-        (FILE_FORMAT => eseotres.landing_data.pipe_csv)
+        {{source('eseotres_raw', 'zoho_lined')}}
 ),
 
 polished_items as (

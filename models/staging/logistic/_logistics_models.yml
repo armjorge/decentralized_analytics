@@ -1,0 +1,15 @@
+models: 
+  - name: logistics_lined
+    description: Información de los proveedores de logística con limpieza básica del código de órdenes de venta e instituciones. Incluye renglones de dos proveedores.
+    columns: 
+      - name: orden
+        description: Número de orden asignado por el cliente, verificable en PDF de órdenes o en número de orden de los sistemas heredados.         
+  - name: logistic_institutions
+    description: institutos enlistados por los proveedores como puntos de entrega, de manera informativa. 
+  - name: logistics_lined_no_centrals
+    description: Registros de proveedores de logística a los que excluimos las órdenes centralizadas provenientes del modelo centralized_orders.
+  - name: logistics_non_zoho 
+    description: Registros de proveedores de logística no centralizados a los que no fue posible ligar el número de orden de venta - clave a la base de ventas. 
+  - name: logistics_not_centrals_grouped
+    description: Registros logísticos con renglones de órdenes centralizadas excluidos, agrupados por órden de venta. 
+

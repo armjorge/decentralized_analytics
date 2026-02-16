@@ -1,18 +1,17 @@
 WITH logistics_lined as ( 
 SELECT 
-    $1::string as codigo_entrega, 
-    trim($2::string) as orden, 
-    trim($3::string) as orden_venta_raw, 
-    $4::string as factura, 
-    trim(REGEXP_REPLACE($5::string, '[^a-zA-Z0-9 ]', '')) as instituto, 
-    $6::string as clave, 
-    $7::numeric as piezas_entregadas, 
-    $8::date as fecha_entrega, 
-    $9::string as comentarios_entrega, 
+    codigo_entrega, 
+    orden, 
+    orden_venta_raw, 
+    factura, 
+    instituto, 
+    clave, 
+    piezas_entregadas, 
+    fecha_entrega, 
+    comentarios_entrega, 
     $10::string as proveedor3pl
 FROM
-    @{{source('eseotres_landing', 'BASE_CSV')}}/SUMA_PTYCSA.csv
-    (FILE_FORMAT => eseotres.landing_data.pipe_csv)
+    {{source('eseotres_raw', 'logistics_lined')}}
 
 ),
 

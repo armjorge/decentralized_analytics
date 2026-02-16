@@ -12,6 +12,8 @@ with source_items as (
         ,factura
     from 
         {{ref('logistics_lined')}}
+    where
+        piezas_entregadas > 0
      
     ),
 
@@ -22,18 +24,6 @@ not_centralized_deliveries as (
         source_items
     where 
         orden not in ( select orden from {{ref('centrailized_orders')}} )
-),
-
-non_zoho_order as (
-
-    select *
-    from 
-        not_centralized_deliveries
-    where 
-        orden_venta not in ( select distinct orden_venta from {{ref('zoho_lined_items')}} )
-
 )
 
-select *
-from non_zoho_order
-order by piezas_entregadas ASC
+select * from not_centralized_deliveries

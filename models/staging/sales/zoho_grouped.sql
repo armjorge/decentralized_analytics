@@ -1,3 +1,4 @@
+with zoho_grouped as (
 SELECT 
     orden_venta,
     MIN(fecha_emision) AS fecha_emision,
@@ -14,3 +15,13 @@ GROUP BY
     orden_venta, file_name
 ORDER BY 
     orden_venta
+) 
+SELECT *
+FROM zoho_grouped
+-- retiramos duplicados
+WHERE (orden_venta, file_name) NOT IN (
+    ('SO24-00165', '2024-06-01 - 2024-11-30 ZN.xlsx'),
+    ('SO24-00166', '2024-06-01 - 2024-11-30.xlsx'),
+    ('SO24-00167', '2024-06-01 - 2024-11-30.xlsx')
+)
+

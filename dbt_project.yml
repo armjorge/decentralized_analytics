@@ -37,7 +37,7 @@ models:
     stagging: 
       +materialized: view
     marts: 
-      +materialized: table
+      +materialized: view
       
 
     
