@@ -20,3 +20,7 @@ sources:
         description: información fuente de sistema heredado Camunda
       - name: zoho_lined
         description: información fuente de sistema Zoho Sales
+      - name: uuids_pagados 
+        description: 'UUIDs identificados como pagados'
+      - name: uuids_institutos
+        description: 'UUIDS definidos como prioritarios en la base de facturas por pagar'
